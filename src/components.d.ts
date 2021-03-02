@@ -6,17 +6,33 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AppForm {
+    }
     interface AppRoot {
+    }
+    interface AppTable {
     }
     interface AppTodo {
     }
 }
 declare global {
+    interface HTMLAppFormElement extends Components.AppForm, HTMLStencilElement {
+    }
+    var HTMLAppFormElement: {
+        prototype: HTMLAppFormElement;
+        new (): HTMLAppFormElement;
+    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
+    };
+    interface HTMLAppTableElement extends Components.AppTable, HTMLStencilElement {
+    }
+    var HTMLAppTableElement: {
+        prototype: HTMLAppTableElement;
+        new (): HTMLAppTableElement;
     };
     interface HTMLAppTodoElement extends Components.AppTodo, HTMLStencilElement {
     }
@@ -25,17 +41,25 @@ declare global {
         new (): HTMLAppTodoElement;
     };
     interface HTMLElementTagNameMap {
+        "app-form": HTMLAppFormElement;
         "app-root": HTMLAppRootElement;
+        "app-table": HTMLAppTableElement;
         "app-todo": HTMLAppTodoElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppForm {
+    }
     interface AppRoot {
+    }
+    interface AppTable {
     }
     interface AppTodo {
     }
     interface IntrinsicElements {
+        "app-form": AppForm;
         "app-root": AppRoot;
+        "app-table": AppTable;
         "app-todo": AppTodo;
     }
 }
@@ -43,7 +67,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-form": LocalJSX.AppForm & JSXBase.HTMLAttributes<HTMLAppFormElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-table": LocalJSX.AppTable & JSXBase.HTMLAttributes<HTMLAppTableElement>;
             "app-todo": LocalJSX.AppTodo & JSXBase.HTMLAttributes<HTMLAppTodoElement>;
         }
     }

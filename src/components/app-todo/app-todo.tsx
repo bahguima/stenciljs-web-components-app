@@ -7,37 +7,14 @@ import { Component, h, State, Host } from '@stencil/core';
 })
 export class TodoComponent {
 
-  @State() task:string = ''
   @State() tasks:string[] = []
-
-
-  handleSubmit = (ev: Event)=>{
-    ev.preventDefault()
-    if (this.task.trim()){
-      this.task =''
-    }
-    console.log('Adicionando ...')
-  }
-
-  handleInput=(ev: Event)=>{
-    const field = ev.target as HTMLInputElement
-    console.log(field.value)
-    this.task = field.value
-  }
-
 
   render() {
     return (
       <Host>
-      <form onSubmit={this.handleSubmit}>
-        <input 
-          onInput={this.handleInput}
-           value={this.task}>
-        </input>
-        <button>Adicionar</button>
-      </form>
+        <app-form></app-form>
       <ul>
-        {this.tasks.map((t, i) => <li>{t}</li>)}
+        {this.tasks.map((t, i) => <li key={i}>{t}</li>)}
       </ul>
       </Host>
     );
